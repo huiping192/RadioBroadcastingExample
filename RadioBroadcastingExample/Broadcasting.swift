@@ -10,7 +10,9 @@ import AVFoundation
 import HaishinKit
 
 class Broadcasting {
-  var dataSource: AudioDataSource!
+  var audioDataSource: AudioDataSource!
+  var videoDataSource: ImageDataSource!
+
   var rtmpStream: RTMPStream!
   
   init() {
@@ -19,10 +21,16 @@ class Broadcasting {
   }
   
   func setupDataSource() {
-    let dataSource = AudioDataSource()
-    dataSource.delegate = self
+    let audioDataSource = AudioDataSource()
+    audioDataSource.delegate = self
     
-    self.dataSource = dataSource
+    self.audioDataSource = audioDataSource
+    
+    let image = UIImage(named: "test")!
+    let videoDataSource = ImageDataSource(image: image, fps: 30)
+    videoDataSource.delegate = self
+    
+    self.videoDataSource = videoDataSource
   }
   
   func setupRTMP() {
