@@ -10,7 +10,7 @@ import AVFoundation
 import HaishinKit
 
 class Broadcasting {
-  var dataSource: BroadcastingDataSource!
+  var dataSource: AudioDataSource!
   var rtmpStream: RTMPStream!
   
   init() {
@@ -19,7 +19,7 @@ class Broadcasting {
   }
   
   func setupDataSource() {
-    let dataSource = BroadcastingDataSource()
+    let dataSource = AudioDataSource()
     dataSource.delegate = self
     
     self.dataSource = dataSource
@@ -28,12 +28,6 @@ class Broadcasting {
   func setupRTMP() {
     let rtmpConnection = RTMPConnection()
     let rtmpStream = RTMPStream(connection: rtmpConnection)
-    rtmpStream.attachAudio(AVCaptureDevice.default(for: AVMediaType.audio)) { error in
-        // print(error)
-    }
-    rtmpStream.attachCamera(DeviceUtil.device(withPosition: .back)) { error in
-        // print(error)
-    }
 
     rtmpConnection.connect("rtmp://localhost/appName/instanceName")
     rtmpStream.publish("streamName")
@@ -42,9 +36,15 @@ class Broadcasting {
   }
 }
 
-extension Broadcasting: BroadcastingDataSourceDelegate {
-  func videoSource(_ broadcastingDataSource: BroadcastingDataSource, didOutput sampleBuffer: CMSampleBuffer) {
+extension Broadcasting: AudioDataSourceDelegate {
+  func audioDataSource(_ audioDataSource: AudioDataSource, didOutput sampleBuffer: CMSampleBuffer) {
     rtmpStream.appendSampleBuffer(sampleBuffer, withType: .audio)
   }
+}
 
+extension Broadcasting: ImageDataSourceDelegate {
+  func imageDataSource(_ imageDataSource: ImageDataSource, didOutput sampleBuffer: CMSampleBuffer){
+    rtmpStream.appendSampleBuffer(sampleBuffer, withType: .video)
+  }
+  
 }

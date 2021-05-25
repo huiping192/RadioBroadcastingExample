@@ -8,15 +8,15 @@
 import Foundation
 import AVFoundation
 
-protocol BroadcastingDataSourceDelegate: class {
-  func videoSource(_ broadcastingDataSource: BroadcastingDataSource, didOutput sampleBuffer: CMSampleBuffer, Type: AVMediaType)
+protocol AudioDataSourceDelegate: class {
+  func audioDataSource(_ audioDataSource: AudioDataSource, didOutput sampleBuffer: CMSampleBuffer)
 }
 
-class BroadcastingDataSource: NSObject {
+class AudioDataSource: NSObject {
   
   let captureSession = AVCaptureSession()
   
-  weak var delegate: BroadcastingDataSourceDelegate?
+  weak var delegate: AudioDataSourceDelegate?
   
   private var session: AVAudioSession = .sharedInstance()
   
@@ -71,9 +71,9 @@ class BroadcastingDataSource: NSObject {
 }
 
 
-extension BroadcastingDataSource: AVCaptureAudioDataOutputSampleBufferDelegate {
+extension AudioDataSource: AVCaptureAudioDataOutputSampleBufferDelegate {
   func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
   
-    delegate?.videoSource(self, didOutput: sampleBuffer, Type: .audio)
+    delegate?.audioDataSource(self, didOutput: sampleBuffer)
   }
 }
