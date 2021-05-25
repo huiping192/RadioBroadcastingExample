@@ -26,12 +26,14 @@ class ImageDataSource: NSObject {
     }
   }
   
-  var image: UIImage
-  
+  let image: UIImage
+  let fps: Int
   private var pb: CVPixelBuffer?
   
-  init(image: UIImage) {
+  init(image: UIImage, fps: Int) {
     self.image = image
+    self.fps = fps
+    
     super.init()
     
     setupDisplayLink()
@@ -43,7 +45,7 @@ class ImageDataSource: NSObject {
     let displayLink = UIScreen.main.displayLink(withTarget: self, selector: #selector(ouput))
     displayLink?.isPaused = pause
     
-    displayLink?.preferredFramesPerSecond = Int(30)
+    displayLink?.preferredFramesPerSecond = fps
     
     displayLink?.add(to: .current, forMode: .default)
     self.displayLink = displayLink
@@ -53,9 +55,7 @@ class ImageDataSource: NSObject {
   @objc private func ouput() {
     autoreleasepool {
       dataQueue.async {
-        guard let pb = self.pb else { return }
-        let sb = CMSampleBuffer.make(pixelBuffer: pb)
-
+        guard let pb = self.pb, let sb = CMSampleBuffer.make(pixelBuffer: pb) else { return }
         self.delegate?.imageDataSource(self, didOutput: sb)
       }
     }

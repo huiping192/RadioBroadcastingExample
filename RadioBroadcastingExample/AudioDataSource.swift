@@ -20,8 +20,7 @@ class AudioDataSource: NSObject {
   
   private var session: AVAudioSession = .sharedInstance()
   
-  private let taskQueue = DispatchQueue(label: "com.huiping192.HPLiveKit.audioCapture.Queue")
-  
+  private let taskQueue = DispatchQueue(label: "com.huiping192.Radio.RadioBroadcastingExample.audioCapture")
   
   override init() {
     super.init()

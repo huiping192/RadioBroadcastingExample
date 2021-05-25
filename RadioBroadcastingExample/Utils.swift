@@ -43,7 +43,7 @@ extension UIImage {
 
 
 extension CMSampleBuffer {
-  static func make(pixelBuffer : CVPixelBuffer) -> CMSampleBuffer {
+  static func make(pixelBuffer : CVPixelBuffer) -> CMSampleBuffer? {
     var info = CMSampleTimingInfo()
     info.presentationTimeStamp = CMTime.zero
     info.duration = CMTime.invalid
@@ -60,6 +60,6 @@ extension CMSampleBuffer {
                                              sampleTiming: &info,
                                              sampleBufferOut: &sampleBuffer);
 
-    return sampleBuffer!
+    return sampleBuffer
   }
 }
