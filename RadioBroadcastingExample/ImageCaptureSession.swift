@@ -112,7 +112,7 @@ extension ImageCaptureSession: Running {
             self.pixelBufferPool = nil
             self.colorSpace = CGColorSpaceCreateDeviceRGB()
             self.displayLink = CADisplayLink(target: self, selector: #selector(onScreen))
-            self.displayLink.frameInterval = self.frameInterval
+            self.displayLink.frameInterval = 30
             self.displayLink.add(to: .main, forMode: RunLoop.Mode.common)
         }
     }

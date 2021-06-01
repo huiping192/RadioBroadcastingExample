@@ -10,8 +10,6 @@
 		7DBD4DFE265D41AF009F7DA9 /* Pods_RadioBroadcastingExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B1B6689E97D964E8175DB9D /* Pods_RadioBroadcastingExample.framework */; };
 		7DBD4DFF265D41AF009F7DA9 /* Pods_RadioBroadcastingExample.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1B1B6689E97D964E8175DB9D /* Pods_RadioBroadcastingExample.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7DBD4E02265D4217009F7DA9 /* Broadcasting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBD4E01265D4217009F7DA9 /* Broadcasting.swift */; };
-		7DBD4E41265D446B009F7DA9 /* AudioDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBD4E40265D446B009F7DA9 /* AudioDataSource.swift */; };
-		7DBD4E43265D482F009F7DA9 /* ImageDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBD4E42265D482F009F7DA9 /* ImageDataSource.swift */; };
 		7DBD4E45265D4A0E009F7DA9 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBD4E44265D4A0E009F7DA9 /* Utils.swift */; };
 		7DD573A82666D3C500739E5E /* ImageCaptureSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD573A72666D3C500739E5E /* ImageCaptureSession.swift */; };
 		7DDFB5C2265D4087002B60BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DDFB5C1265D4087002B60BF /* AppDelegate.swift */; };
@@ -39,8 +37,6 @@
 /* Begin PBXFileReference section */
 		1B1B6689E97D964E8175DB9D /* Pods_RadioBroadcastingExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RadioBroadcastingExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DBD4E01265D4217009F7DA9 /* Broadcasting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Broadcasting.swift; sourceTree = "<group>"; };
-		7DBD4E40265D446B009F7DA9 /* AudioDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioDataSource.swift; sourceTree = "<group>"; };
-		7DBD4E42265D482F009F7DA9 /* ImageDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDataSource.swift; sourceTree = "<group>"; };
 		7DBD4E44265D4A0E009F7DA9 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		7DD573A72666D3C500739E5E /* ImageCaptureSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCaptureSession.swift; sourceTree = "<group>"; };
 		7DDFB5BE265D4087002B60BF /* RadioBroadcastingExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RadioBroadcastingExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -96,8 +92,6 @@
 				7DDFB5CC265D408A002B60BF /* LaunchScreen.storyboard */,
 				7DDFB5CF265D408A002B60BF /* Info.plist */,
 				7DBD4E01265D4217009F7DA9 /* Broadcasting.swift */,
-				7DBD4E40265D446B009F7DA9 /* AudioDataSource.swift */,
-				7DBD4E42265D482F009F7DA9 /* ImageDataSource.swift */,
 				7DBD4E44265D4A0E009F7DA9 /* Utils.swift */,
 				7DD573A72666D3C500739E5E /* ImageCaptureSession.swift */,
 			);
@@ -236,11 +230,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7DBD4E43265D482F009F7DA9 /* ImageDataSource.swift in Sources */,
 				7DDFB5C6265D4087002B60BF /* ViewController.swift in Sources */,
 				7DDFB5C2265D4087002B60BF /* AppDelegate.swift in Sources */,
 				7DBD4E45265D4A0E009F7DA9 /* Utils.swift in Sources */,
-				7DBD4E41265D446B009F7DA9 /* AudioDataSource.swift in Sources */,
 				7DBD4E02265D4217009F7DA9 /* Broadcasting.swift in Sources */,
 				7DDFB5C4265D4087002B60BF /* SceneDelegate.swift in Sources */,
 				7DD573A82666D3C500739E5E /* ImageCaptureSession.swift in Sources */,
