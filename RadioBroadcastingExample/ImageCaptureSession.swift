@@ -10,7 +10,7 @@ import HaishinKit
 import AVFoundation
 
 class ImageCaptureSession: NSObject, CustomCaptureSession {
-    static let defaultFrameInterval: Int = 2
+    static let defaultFrameInterval: Int = 30
     static let defaultAttributes: [NSString: NSObject] = [
         kCVPixelBufferPixelFormatTypeKey: NSNumber(value: kCVPixelFormatType_32BGRA),
         kCVPixelBufferCGBitmapContextCompatibilityKey: true as NSObject
@@ -39,6 +39,7 @@ class ImageCaptureSession: NSObject, CustomCaptureSession {
     private var displayLink: CADisplayLink!
 
     private var image: UIImage!
+    private var cgimage: CGImage!
     private var size: CGSize = .zero {
         didSet {
             guard size != oldValue else {
@@ -66,11 +67,24 @@ class ImageCaptureSession: NSObject, CustomCaptureSession {
             _pixelBufferPool = newValue
         }
     }
+  
+    private var pixelBuffer: CVPixelBuffer?
 
     public init(image: UIImage) {
         self.image = image
         size = image.size
-        super.init()
+        self.cgimage = image.cgImage
+      
+      
+      super.init()
+      
+      
+      var pixelBuffer: CVPixelBuffer?
+      
+      CVPixelBufferPoolCreatePixelBuffer(nil, pixelBufferPool, &pixelBuffer)
+      CVPixelBufferLockBaseAddress(pixelBuffer!, [])
+      context.render(CIImage(cgImage: self.cgimage), to: pixelBuffer!)
+      self.pixelBuffer = pixelBuffer
     }
 
     @objc
@@ -90,13 +104,8 @@ class ImageCaptureSession: NSObject, CustomCaptureSession {
     }
 
     open func onScreenProcess(_ displayLink: CADisplayLink) {
-      var pixelBuffer: CVPixelBuffer?
       
-      CVPixelBufferPoolCreatePixelBuffer(nil, pixelBufferPool, &pixelBuffer)
-      CVPixelBufferLockBaseAddress(pixelBuffer!, [])
-      let image: UIImage = self.image
-      context.render(CIImage(cgImage: image.cgImage!), to: pixelBuffer!)
-      delegate?.output(pixelBuffer: pixelBuffer!, withPresentationTime: CMTimeMakeWithSeconds(displayLink.timestamp, preferredTimescale: 1000))
+      delegate?.output(pixelBuffer: self.pixelBuffer!, withPresentationTime: CMTimeMakeWithSeconds(displayLink.timestamp, preferredTimescale: 1000))
       CVPixelBufferUnlockBaseAddress(pixelBuffer!, [])
     }
 }
@@ -112,7 +121,7 @@ extension ImageCaptureSession: Running {
             self.pixelBufferPool = nil
             self.colorSpace = CGColorSpaceCreateDeviceRGB()
             self.displayLink = CADisplayLink(target: self, selector: #selector(onScreen))
-            self.displayLink.frameInterval = 30
+            self.displayLink.preferredFramesPerSecond = frameInterval
             self.displayLink.add(to: .main, forMode: RunLoop.Mode.common)
         }
     }
