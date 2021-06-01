@@ -41,6 +41,10 @@ class ImageDataSource: NSObject {
     self.pb = image.toCVPixelBuffer()
   }
   
+  func start() {
+    pause = false
+  }
+  
   private func setupDisplayLink() {
     let displayLink = UIScreen.main.displayLink(withTarget: self, selector: #selector(ouput))
     displayLink?.isPaused = pause
@@ -55,7 +59,8 @@ class ImageDataSource: NSObject {
   @objc private func ouput() {
     autoreleasepool {
       dataQueue.async {
-        guard let pb = self.pb, let sb = CMSampleBuffer.make(pixelBuffer: pb) else { return }
+        let a = CMTimeMakeWithSeconds(self.displayLink!.timestamp, preferredTimescale: 1000)
+        guard let pb = self.image.toCVPixelBuffer(), let sb = CMSampleBuffer.make(pixelBuffer: pb, presentationTimeStamp: a) else { return }
         self.delegate?.imageDataSource(self, didOutput: sb)
       }
     }

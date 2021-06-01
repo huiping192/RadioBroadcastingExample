@@ -29,6 +29,10 @@ class AudioDataSource: NSObject {
     configureAudio()
   }
   
+  func start() {
+    captureSession.startRunning()
+  }
+  
   func configureAudioSession() {
     let session = AVAudioSession.sharedInstance()
     do {

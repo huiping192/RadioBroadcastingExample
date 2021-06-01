@@ -8,6 +8,7 @@
 import Foundation
 import AVFoundation
 import HaishinKit
+import VideoToolbox
 
 class Broadcasting {
   var audioDataSource: AudioDataSource!
@@ -20,10 +21,17 @@ class Broadcasting {
     setupRTMP()
   }
   
+  func start() {
+    setupDataSource()
+    
+    audioDataSource.start()
+    videoDataSource.start()
+  }
+  
   func setupDataSource() {
     let audioDataSource = AudioDataSource()
     audioDataSource.delegate = self
-    
+
     self.audioDataSource = audioDataSource
     
     let image = UIImage(named: "test")!
@@ -36,9 +44,23 @@ class Broadcasting {
   func setupRTMP() {
     let rtmpConnection = RTMPConnection()
     let rtmpStream = RTMPStream(connection: rtmpConnection)
+    rtmpStream.audioSettings = [
+        .muted: true, // mute audio
+        .bitrate: 32 * 1000,
+    ]
+    rtmpStream.videoSettings = [
+        .width: 360, // video output width
+        .height: 640, // video output height
+        .bitrate: 750 * 1000, // video output bitrate
+        .profileLevel: kVTProfileLevel_H264_Baseline_3_1, // H264 Profile require "import VideoToolbox"
+        .maxKeyFrameIntervalDuration: 2, // key frame / sec
+    ]
+    
+//    rtmpStream.attachScreen(ScreenCaptureSession(shared: UIApplication.shared))
 
-    rtmpConnection.connect("rtmp://localhost/appName/instanceName")
-    rtmpStream.publish("streamName")
+    rtmpConnection.connect("rtmp://a.rtmp.youtube.com/live2")
+    rtmpStream.publish("")
+    
     
     self.rtmpStream = rtmpStream
   }

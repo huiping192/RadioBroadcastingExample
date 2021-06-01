@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7DBD4DFE265D41AF009F7DA9 /* Pods_RadioBroadcastingExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B1B6689E97D964E8175DB9D /* Pods_RadioBroadcastingExample.framework */; };
-		7DBD4DFF265D41AF009F7DA9 /* Pods_RadioBroadcastingExample.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1B1B6689E97D964E8175DB9D /* Pods_RadioBroadcastingExample.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		7DBD4DFF265D41AF009F7DA9 /* Pods_RadioBroadcastingExample.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1B1B6689E97D964E8175DB9D /* Pods_RadioBroadcastingExample.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7DBD4E02265D4217009F7DA9 /* Broadcasting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBD4E01265D4217009F7DA9 /* Broadcasting.swift */; };
 		7DBD4E41265D446B009F7DA9 /* AudioDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBD4E40265D446B009F7DA9 /* AudioDataSource.swift */; };
 		7DBD4E43265D482F009F7DA9 /* ImageDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DBD4E42265D482F009F7DA9 /* ImageDataSource.swift */; };
@@ -316,10 +316,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -371,7 +371,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -394,7 +394,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.huiping.RadioBroadcastingExample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.huiping192.RadioBroadcastingExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

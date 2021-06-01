@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -185,7 +185,7 @@
 		1F135EF83CEC7AB83A9FB135A4B98DC2 /* NALUnit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NALUnit.swift; path = Sources/ISO/NALUnit.swift; sourceTree = "<group>"; };
 		1FF6AB669C4F28BDA92E1F7A9D41C71D /* AnyUtil.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnyUtil.swift; path = Sources/Util/AnyUtil.swift; sourceTree = "<group>"; };
 		235519379F6053412E20FE5C3775AC5E /* DeviceUtil+Extenstion.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DeviceUtil+Extenstion.swift"; path = "Platforms/iOS/DeviceUtil+Extenstion.swift"; sourceTree = "<group>"; };
-		25BFFBE6D90519C6BE2EBFA4D388AED0 /* HaishinKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = HaishinKit.framework; path = HaishinKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		25BFFBE6D90519C6BE2EBFA4D388AED0 /* HaishinKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HaishinKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		26D425A3504745CFCA815A9ABF10AAC4 /* AMF3Serializer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AMF3Serializer.swift; path = Sources/RTMP/AMF3Serializer.swift; sourceTree = "<group>"; };
 		29DBDF1298F6080915A4A143954B440A /* RTMPSocket.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RTMPSocket.swift; path = Sources/RTMP/RTMPSocket.swift; sourceTree = "<group>"; };
 		2A7A29A4D161F2A046D54B27F4DF4F2F /* Logboard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Logboard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -205,7 +205,7 @@
 		45F345900196B3E3F9CAC40A0EC8D437 /* MTHKView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MTHKView.swift; path = Sources/Media/MTHKView.swift; sourceTree = "<group>"; };
 		485229E88428442D22C186650B9C5983 /* Pods-RadioBroadcastingExample-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-RadioBroadcastingExample-umbrella.h"; sourceTree = "<group>"; };
 		4890C16C633C81EBFD617DBDCBD676EF /* Logboard-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Logboard-umbrella.h"; sourceTree = "<group>"; };
-		48D777858810913454F01ED95F2C997A /* Pods_RadioBroadcastingExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_RadioBroadcastingExample.framework; path = "Pods-RadioBroadcastingExample.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		48D777858810913454F01ED95F2C997A /* Pods_RadioBroadcastingExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RadioBroadcastingExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		49813E9235CED5D55FA59E06B71F1AF6 /* Logboard.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Logboard.h; path = Platforms/iOS/Logboard.h; sourceTree = "<group>"; };
 		4C364CB99A5DBBD42C208B54B632892C /* FLVAudioCodec.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FLVAudioCodec.swift; path = Sources/FLV/FLVAudioCodec.swift; sourceTree = "<group>"; };
 		4D5F41ABF83E58E8CAE1A571BD7C07BB /* ProgramSpecific.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ProgramSpecific.swift; path = Sources/ISO/ProgramSpecific.swift; sourceTree = "<group>"; };
@@ -244,7 +244,7 @@
 		9C1A5A76D4E5DBAAAA8DC9405729A310 /* HaishinKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "HaishinKit-umbrella.h"; sourceTree = "<group>"; };
 		9C370D4F0F1D43AB53FD7CD85C692A8B /* LogboardAppender.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LogboardAppender.swift; path = Sources/Logboard/LogboardAppender.swift; sourceTree = "<group>"; };
 		9D4DE776CE49CA105AAEC79714E6CEDF /* AudioSpecificConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AudioSpecificConfig.swift; path = Sources/ISO/AudioSpecificConfig.swift; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9EC317FAB4090E2AC4469AFEA764C65C /* CircularBuffer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CircularBuffer.swift; path = Sources/Util/CircularBuffer.swift; sourceTree = "<group>"; };
 		A16260D20C165010C66CB218165BA3C5 /* TSReader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TSReader.swift; path = Sources/TS/TSReader.swift; sourceTree = "<group>"; };
 		A262ADB16D14AA5D0AE9F1DA39CD05C6 /* H264Decoder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = H264Decoder.swift; path = Sources/Codec/H264Decoder.swift; sourceTree = "<group>"; };
@@ -263,7 +263,7 @@
 		B5A54A8416C8D55B268DD05E22EE398E /* RTMPConnection.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RTMPConnection.swift; path = Sources/RTMP/RTMPConnection.swift; sourceTree = "<group>"; };
 		B64D713AF91160D6FE3EDC5F6553B056 /* CMAudioFormatDescription+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CMAudioFormatDescription+Extension.swift"; path = "Sources/Extension/CMAudioFormatDescription+Extension.swift"; sourceTree = "<group>"; };
 		B9F2F7816E086CFD53E06C012703719B /* AudioCodec.Destination.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AudioCodec.Destination.swift; path = Sources/Codec/AudioCodec.Destination.swift; sourceTree = "<group>"; };
-		BBF3C907BB548DD1552305E79C7836C3 /* Logboard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Logboard.framework; path = Logboard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BBF3C907BB548DD1552305E79C7836C3 /* Logboard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Logboard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC87D61F9B1C7F5E6A1BFAEC22D300FE /* TimerDriver.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TimerDriver.swift; path = Sources/Util/TimerDriver.swift; sourceTree = "<group>"; };
 		BD3B3AAC2A03913B3FCFF8F1DD448154 /* FLVFrameType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FLVFrameType.swift; path = Sources/FLV/FLVFrameType.swift; sourceTree = "<group>"; };
 		BDE3B7340C7395F0770ADDAA10EA7652 /* AMF0Serializer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AMF0Serializer.swift; path = Sources/RTMP/AMF0Serializer.swift; sourceTree = "<group>"; };
@@ -370,7 +370,6 @@
 				3881CC86266CEDDE0B82BA92326F6D88 /* SocketAppender.swift */,
 				92825050893C61A91E3FE3156812D2CC /* Support Files */,
 			);
-			name = Logboard;
 			path = Logboard;
 			sourceTree = "<group>";
 		};
@@ -537,7 +536,6 @@
 				DAA03975D34AEBA8557017064FD6EA33 /* VTSessionPropertyKey.swift */,
 				859F723A5CA92724D7C3C1681F43E87E /* Support Files */,
 			);
-			name = HaishinKit;
 			path = HaishinKit;
 			sourceTree = "<group>";
 		};
@@ -677,7 +675,7 @@
 				LastUpgradeCheck = 1100;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -1012,7 +1010,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
