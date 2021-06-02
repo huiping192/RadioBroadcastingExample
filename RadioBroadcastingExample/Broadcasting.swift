@@ -14,6 +14,9 @@ class Broadcasting {
 
   var rtmpStream: RTMPStream!
   
+  private let fps = 2
+  private let maxKeyFrameIntervalDuration = 2 // 2s
+  
   init() {
     setupAudioSession()
     setupRTMP()
@@ -50,17 +53,21 @@ class Broadcasting {
         .muted: false, // mute audio
         .bitrate: 32 * 1000,
     ]
+    let image = UIImage(named: "test")!
+    let size = image.size
     rtmpStream.videoSettings = [
-        .width: 360, // video output width
-        .height: 640, // video output height
+      .width: size.width, // video output width
+      .height: size.height, // video output height
         .bitrate: 750 * 1000, // video output bitrate
-        .profileLevel: kVTProfileLevel_H264_Baseline_3_1, // H264 Profile require "import VideoToolbox"
-        .maxKeyFrameIntervalDuration: 30, // key frame / sec
+        .profileLevel: kVTProfileLevel_H264_Main_3_0,
+        .maxKeyFrameIntervalDuration: maxKeyFrameIntervalDuration, // key frame / sec
     ]
     rtmpStream.attachAudio(AVCaptureDevice.default(for: AVMediaType.audio)) { error in
         // print(error)
     }
-    rtmpStream.attachScreen(ImageCaptureSession(image: UIImage(named: "test")!))
+    let imageCaptureSession = ImageCaptureSession(image: image, frameInterval: fps)
+    imageCaptureSession.frameInterval = fps // 2fps
+    rtmpStream.attachScreen(imageCaptureSession)
 
     rtmpConnection.connect("rtmp://a.rtmp.youtube.com/live2")
     
