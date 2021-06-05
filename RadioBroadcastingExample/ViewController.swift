@@ -15,7 +15,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
       
-      broadCasting = Broadcasting()
+      broadCasting = Broadcasting(url: "rtmp://a.rtmp.youtube.com/live2", key: "")
     }
   
   override func viewDidAppear(_ animated: Bool) {

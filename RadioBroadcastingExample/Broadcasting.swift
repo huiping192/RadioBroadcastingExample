@@ -11,21 +11,31 @@ import HaishinKit
 import VideoToolbox
 
 class Broadcasting {
-
-  var rtmpStream: RTMPStream!
   
-  private let fps = 2
+  private var fps = 30 {
+    didSet {
+      imageCaptureSession.frameInterval = fps // 2fps
+    }
+  }
   private let maxKeyFrameIntervalDuration = 2 // 2s
   
-  init() {
+  private let url: String
+  private let key: String
+  
+  private var rtmpStream: RTMPStream!
+  private var imageCaptureSession: ImageCaptureSession!
+  
+  init(url: String, key: String) {
+    self.url = url
+    self.key = key
+    
     setupAudioSession()
     setupRTMP()
   }
   
   func start() {
-    rtmpStream.publish("")
+    rtmpStream.publish(key)
   }
-  
   
   func setupAudioSession() {
     let session = AVAudioSession.sharedInstance()
@@ -63,13 +73,12 @@ class Broadcasting {
         .maxKeyFrameIntervalDuration: maxKeyFrameIntervalDuration, // key frame / sec
     ]
     rtmpStream.attachAudio(AVCaptureDevice.default(for: AVMediaType.audio)) { error in
-        // print(error)
+        fatalError("attachAudio failed!")
     }
-    let imageCaptureSession = ImageCaptureSession(image: image, frameInterval: fps)
-    imageCaptureSession.frameInterval = fps // 2fps
+    self.imageCaptureSession = ImageCaptureSession(image: image, frameInterval: fps)
     rtmpStream.attachScreen(imageCaptureSession)
 
-    rtmpConnection.connect("rtmp://a.rtmp.youtube.com/live2")
+    rtmpConnection.connect(url)
     
     self.rtmpStream = rtmpStream
   }
