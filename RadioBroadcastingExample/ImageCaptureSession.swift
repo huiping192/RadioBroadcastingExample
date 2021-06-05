@@ -17,7 +17,11 @@ class ImageCaptureSession: NSObject, CustomCaptureSession {
   ]
   
   public var enabledScale = false
-  public var frameInterval: Int = ImageCaptureSession.defaultFrameInterval
+  public var frameInterval: Int = ImageCaptureSession.defaultFrameInterval {
+    didSet {
+      self.displayLink.preferredFramesPerSecond = frameInterval
+    }
+  }
   public var attributes: [NSString: NSObject] {
     var attributes: [NSString: NSObject] = ImageCaptureSession.defaultAttributes
     attributes[kCVPixelBufferWidthKey] = NSNumber(value: Float(size.width * scale))
@@ -38,8 +42,20 @@ class ImageCaptureSession: NSObject, CustomCaptureSession {
   private var colorSpace: CGColorSpace!
   private var displayLink: CADisplayLink!
   
-  private var image: UIImage!
-  private var cgimage: CGImage!
+  var image: UIImage {
+    didSet {
+      var pixelBuffer: CVPixelBuffer?
+      
+      let cgimage = image.cgImage!
+      CVPixelBufferPoolCreatePixelBuffer(nil, pixelBufferPool, &pixelBuffer)
+      CVPixelBufferLockBaseAddress(pixelBuffer!, [])
+      context.render(CIImage(cgImage: cgimage), to: pixelBuffer!)
+      self.pixelBuffer = pixelBuffer
+      
+      size = image.size
+    }
+  }
+
   private var size: CGSize = .zero {
     didSet {
       guard size != oldValue else {
@@ -72,20 +88,10 @@ class ImageCaptureSession: NSObject, CustomCaptureSession {
   
   public init(image: UIImage, frameInterval: Int) {
     self.image = image
-    size = image.size
-    self.cgimage = image.cgImage
-    
-    
-    super.init()
-    
+    self.size = image.size
     self.frameInterval = frameInterval
-    
-    var pixelBuffer: CVPixelBuffer?
-    
-    CVPixelBufferPoolCreatePixelBuffer(nil, pixelBufferPool, &pixelBuffer)
-    CVPixelBufferLockBaseAddress(pixelBuffer!, [])
-    context.render(CIImage(cgImage: self.cgimage), to: pixelBuffer!)
-    self.pixelBuffer = pixelBuffer
+
+    super.init()
   }
   
   @objc

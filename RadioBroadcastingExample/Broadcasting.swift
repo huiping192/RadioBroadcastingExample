@@ -12,7 +12,7 @@ import VideoToolbox
 
 class Broadcasting {
   
-  private var fps = 30 {
+  var fps = 30 {
     didSet {
       imageCaptureSession.frameInterval = fps // 2fps
     }
@@ -24,6 +24,13 @@ class Broadcasting {
   
   private var rtmpStream: RTMPStream!
   private var imageCaptureSession: ImageCaptureSession!
+  
+  var image: UIImage? {
+    didSet {
+      guard let image = image else { return }
+      imageCaptureSession.image = image
+    }
+  }
   
   init(url: String, key: String) {
     self.url = url
