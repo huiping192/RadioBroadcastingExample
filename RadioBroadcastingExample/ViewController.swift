@@ -56,14 +56,10 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
     if let image = info[UIImagePickerController.InfoKey.originalImage.rawValue] as? UIImage {
       updateImage(image: image)
     }
-    // モーダルビューを閉じる
     self.dismiss(animated: true, completion: nil)
   }
   
-  //画像選択がキャンセルされた時に呼ばれる.
   func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-    
-    // モーダルビューを閉じる
     self.dismiss(animated: true, completion: nil)
   }
 }
