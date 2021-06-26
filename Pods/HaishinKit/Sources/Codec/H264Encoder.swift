@@ -158,7 +158,7 @@ public final class H264Encoder {
             delegate?.didSetFormatDescription(video: formatDescription)
         }
     }
-    weak var delegate: VideoEncoderDelegate?
+    public weak var delegate: VideoEncoderDelegate?
 
     private(set) var status: OSStatus = noErr
     private var attributes: [NSString: AnyObject] {
@@ -251,11 +251,11 @@ public final class H264Encoder {
         }
     }
 
-    init() {
+    public init() {
         settings.observer = self
     }
 
-    func encodeImageBuffer(_ imageBuffer: CVImageBuffer, presentationTimeStamp: CMTime, duration: CMTime) {
+    public func encodeImageBuffer(_ imageBuffer: CVImageBuffer, presentationTimeStamp: CMTime, duration: CMTime) {
         guard isRunning.value && locked == 0 else {
             return
         }

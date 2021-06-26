@@ -32,6 +32,8 @@ class Broadcasting {
     }
   }
   
+  private var sender: RadioImageBufferSender?
+  
   init(url: String, key: String) {
     self.url = url
     self.key = key
@@ -82,9 +84,14 @@ class Broadcasting {
     rtmpStream.attachAudio(AVCaptureDevice.default(for: AVMediaType.audio)) { error in
         fatalError("attachAudio failed!")
     }
-    self.imageCaptureSession = ImageCaptureSession(image: image, frameInterval: fps)
-    rtmpStream.attachScreen(imageCaptureSession)
-
+//    self.imageCaptureSession = ImageCaptureSession(image: image, frameInterval: fps)
+//    rtmpStream.attachScreen(imageCaptureSession)
+        
+    sender = RadioImageBufferSender(image: image, frameInterval: fps)
+    sender?.block =  { sb in
+      rtmpStream.test(buffer: sb)
+    }
+    
     rtmpConnection.connect(url)
     
     self.rtmpStream = rtmpStream

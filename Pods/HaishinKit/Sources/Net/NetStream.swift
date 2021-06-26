@@ -1,6 +1,14 @@
 import AVFoundation
 import CoreImage
 
+
+public extension NetStream {
+  func test(buffer: CMSampleBuffer) {
+    mixer.videoIO.queue.enqueue(buffer)
+  }
+}
+
+
 /// The `NetStream` class is the foundation of a RTMPStream, HTTPStream.
 open class NetStream: NSObject {
     private static let queueKey = DispatchSpecificKey<UnsafeMutableRawPointer>()
