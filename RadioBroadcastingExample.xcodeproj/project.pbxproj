@@ -17,6 +17,7 @@
 		7DDFB5C9265D4087002B60BF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DDFB5C7265D4087002B60BF /* Main.storyboard */; };
 		7DDFB5CB265D408A002B60BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DDFB5CA265D408A002B60BF /* Assets.xcassets */; };
 		7DDFB5CE265D408A002B60BF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DDFB5CC265D408A002B60BF /* LaunchScreen.storyboard */; };
+		7DF8951B2687A49700435043 /* RadioImageEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF8951A2687A49700435043 /* RadioImageEncoder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -45,6 +46,7 @@
 		7DDFB5CA265D408A002B60BF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7DDFB5CD265D408A002B60BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7DDFB5CF265D408A002B60BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7DF8951A2687A49700435043 /* RadioImageEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioImageEncoder.swift; sourceTree = "<group>"; };
 		94199A765C16997D08792D98 /* Pods-RadioBroadcastingExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RadioBroadcastingExample.debug.xcconfig"; path = "Target Support Files/Pods-RadioBroadcastingExample/Pods-RadioBroadcastingExample.debug.xcconfig"; sourceTree = "<group>"; };
 		D70FDD0CD4DC2FE2410FCFF3 /* Pods-RadioBroadcastingExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RadioBroadcastingExample.release.xcconfig"; path = "Target Support Files/Pods-RadioBroadcastingExample/Pods-RadioBroadcastingExample.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -91,6 +93,7 @@
 				7DDFB5CF265D408A002B60BF /* Info.plist */,
 				7DBD4E01265D4217009F7DA9 /* Broadcasting.swift */,
 				7DD573A72666D3C500739E5E /* ImageCaptureSession.swift */,
+				7DF8951A2687A49700435043 /* RadioImageEncoder.swift */,
 			);
 			path = RadioBroadcastingExample;
 			sourceTree = "<group>";
@@ -231,6 +234,7 @@
 				7DDFB5C2265D4087002B60BF /* AppDelegate.swift in Sources */,
 				7DBD4E02265D4217009F7DA9 /* Broadcasting.swift in Sources */,
 				7DDFB5C4265D4087002B60BF /* SceneDelegate.swift in Sources */,
+				7DF8951B2687A49700435043 /* RadioImageEncoder.swift in Sources */,
 				7DD573A82666D3C500739E5E /* ImageCaptureSession.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
