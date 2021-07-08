@@ -84,7 +84,7 @@ class Broadcasting {
     }
     self.imageCaptureSession = ImageCaptureSession(image: image, frameInterval: fps)
     rtmpStream.attachScreen(imageCaptureSession)
-
+    
     rtmpConnection.connect(url)
     
     self.rtmpStream = rtmpStream
