@@ -9,6 +9,7 @@ import Foundation
 import HaishinKit
 import AVFoundation
 
+// ラジオ画像事前にエンコードして、cache保持
 class RadioImageEncoder {
   
   lazy var encoder = H264Encoder()

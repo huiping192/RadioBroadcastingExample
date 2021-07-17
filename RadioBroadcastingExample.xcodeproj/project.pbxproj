@@ -65,6 +65,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7DAFCD7C26A2C06D006A68F4 /* ForegroundOnly */ = {
+			isa = PBXGroup;
+			children = (
+				7DD573A72666D3C500739E5E /* ImageCaptureSession.swift */,
+			);
+			path = ForegroundOnly;
+			sourceTree = "<group>";
+		};
+		7DAFCD7D26A2C08E006A68F4 /* BacgroundSupport */ = {
+			isa = PBXGroup;
+			children = (
+				7DF8951A2687A49700435043 /* RadioImageEncoder.swift */,
+				7DAFCD7A269DEB87006A68F4 /* RadioImageBufferSender.swift */,
+			);
+			path = BacgroundSupport;
+			sourceTree = "<group>";
+		};
 		7DDFB5B5265D4087002B60BF = {
 			isa = PBXGroup;
 			children = (
@@ -86,6 +103,8 @@
 		7DDFB5C0265D4087002B60BF /* RadioBroadcastingExample */ = {
 			isa = PBXGroup;
 			children = (
+				7DAFCD7D26A2C08E006A68F4 /* BacgroundSupport */,
+				7DAFCD7C26A2C06D006A68F4 /* ForegroundOnly */,
 				7DDFB5C1265D4087002B60BF /* AppDelegate.swift */,
 				7DDFB5C3265D4087002B60BF /* SceneDelegate.swift */,
 				7DDFB5C5265D4087002B60BF /* ViewController.swift */,
@@ -94,9 +113,6 @@
 				7DDFB5CC265D408A002B60BF /* LaunchScreen.storyboard */,
 				7DDFB5CF265D408A002B60BF /* Info.plist */,
 				7DBD4E01265D4217009F7DA9 /* Broadcasting.swift */,
-				7DD573A72666D3C500739E5E /* ImageCaptureSession.swift */,
-				7DF8951A2687A49700435043 /* RadioImageEncoder.swift */,
-				7DAFCD7A269DEB87006A68F4 /* RadioImageBufferSender.swift */,
 			);
 			path = RadioBroadcastingExample;
 			sourceTree = "<group>";
