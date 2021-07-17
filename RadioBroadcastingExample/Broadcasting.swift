@@ -72,8 +72,8 @@ class Broadcasting {
         .muted: false, // mute audio
         .bitrate: 32 * 1000,
     ]
-    let image = UIImage(named: "test")!
-    let size = image.size
+    self.image = UIImage(named: "test")!
+    let size = image!.size
     rtmpStream.videoSettings = [
       .width: size.width, // video output width
       .height: size.height, // video output height
@@ -84,16 +84,26 @@ class Broadcasting {
     rtmpStream.attachAudio(AVCaptureDevice.default(for: AVMediaType.audio)) { error in
         fatalError("attachAudio failed!")
     }
-//    self.imageCaptureSession = ImageCaptureSession(image: image, frameInterval: fps)
-//    rtmpStream.attachScreen(imageCaptureSession)
-        
-    sender = RadioImageBufferSender(image: image, frameInterval: fps)
-    sender?.block =  { sb in
-      rtmpStream.test(buffer: sb)
-    }
     
+    // only support foreground broadcast
+//    setupForegroundBroadcast()
+    
+    setupBackgroundSupport()
+            
     rtmpConnection.connect(url)
     
     self.rtmpStream = rtmpStream
+  }
+  
+  func setupForegroundBroadcast() {
+     self.imageCaptureSession = ImageCaptureSession(image: image!, frameInterval: fps)
+     rtmpStream.attachScreen(imageCaptureSession)
+  }
+  
+  func setupBackgroundSupport() {
+    sender = RadioImageBufferSender(image: image!, frameInterval: fps)
+    sender?.block =  { sb in
+      self.rtmpStream.test(buffer: sb)
+    }
   }
 }
