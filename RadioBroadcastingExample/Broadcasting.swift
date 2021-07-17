@@ -14,7 +14,7 @@ class Broadcasting {
   
   var fps = 30 {
     didSet {
-      imageCaptureSession.frameInterval = fps // 2fps
+      imageCaptureSession?.frameInterval = fps // 2fps
     }
   }
   private let maxKeyFrameIntervalDuration = 2 // 2s
@@ -23,12 +23,12 @@ class Broadcasting {
   private let key: String
   
   private var rtmpStream: RTMPStream!
-  private var imageCaptureSession: ImageCaptureSession!
+  private var imageCaptureSession: ImageCaptureSession?
   
   var image: UIImage? {
     didSet {
       guard let image = image else { return }
-      imageCaptureSession.image = image
+      imageCaptureSession?.image = image
     }
   }
   
@@ -44,6 +44,8 @@ class Broadcasting {
   
   func start() {
     rtmpStream.publish(key)
+    
+    sender?.start()
   }
   
   func setupAudioSession() {
@@ -67,9 +69,9 @@ class Broadcasting {
   
   func setupRTMP() {
     let rtmpConnection = RTMPConnection()
-    let rtmpStream = RTMPStream(connection: rtmpConnection)
+    self.rtmpStream = RTMPStream(connection: rtmpConnection)
     rtmpStream.audioSettings = [
-        .muted: false, // mute audio
+        .muted: true, // mute audio
         .bitrate: 32 * 1000,
     ]
     self.image = UIImage(named: "test")!
@@ -91,8 +93,6 @@ class Broadcasting {
     setupBackgroundSupport()
             
     rtmpConnection.connect(url)
-    
-    self.rtmpStream = rtmpStream
   }
   
   func setupForegroundBroadcast() {
@@ -102,8 +102,11 @@ class Broadcasting {
   
   func setupBackgroundSupport() {
     sender = RadioImageBufferSender(image: image!, frameInterval: fps)
-    sender?.block =  { sb in
-      self.rtmpStream.test(buffer: sb)
+    sender?.block =  { sb,time in
+      self.rtmpStream.test(buffer: sb, timestamp: time)
     }
+    
+    sender?.prepare()
+    
   }
 }

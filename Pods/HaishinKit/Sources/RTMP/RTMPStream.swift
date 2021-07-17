@@ -645,3 +645,11 @@ extension RTMPStream: AVMixerDelegate {
         delegate?.rtmpStream(self, didOutput: buffer, presentationTimeStamp: presentationTimeStamp)
     }
 }
+
+public extension RTMPStream {
+  func test(buffer: CMSampleBuffer, timestamp: CMTime) {
+    muxer.sampleOutput(video: buffer,timestamp: timestamp)
+  }
+}
+
+

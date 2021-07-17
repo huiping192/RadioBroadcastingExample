@@ -42,19 +42,7 @@ class ImageCaptureSession: NSObject, CustomCaptureSession {
   private var colorSpace: CGColorSpace!
   private var displayLink: CADisplayLink!
   
-  var image: UIImage {
-    didSet {
-      var pixelBuffer: CVPixelBuffer?
-      
-      let cgimage = image.cgImage!
-      CVPixelBufferPoolCreatePixelBuffer(nil, pixelBufferPool, &pixelBuffer)
-      CVPixelBufferLockBaseAddress(pixelBuffer!, [])
-      context.render(CIImage(cgImage: cgimage), to: pixelBuffer!)
-      self.pixelBuffer = pixelBuffer
-      
-      size = image.size
-    }
-  }
+  var image: UIImage
 
   private var size: CGSize = .zero {
     didSet {
@@ -92,6 +80,16 @@ class ImageCaptureSession: NSObject, CustomCaptureSession {
     self.frameInterval = frameInterval
 
     super.init()
+    
+    var pixelBuffer: CVPixelBuffer?
+    
+    let cgimage = image.cgImage!
+    CVPixelBufferPoolCreatePixelBuffer(nil, pixelBufferPool, &pixelBuffer)
+    CVPixelBufferLockBaseAddress(pixelBuffer!, [])
+    context.render(CIImage(cgImage: cgimage), to: pixelBuffer!)
+    self.pixelBuffer = pixelBuffer
+    
+    size = image.size
   }
   
   @objc

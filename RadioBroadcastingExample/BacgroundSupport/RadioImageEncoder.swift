@@ -51,15 +51,7 @@ class RadioImageEncoder {
   
   var image: UIImage {
     didSet {
-      var pixelBuffer: CVPixelBuffer?
       
-      let cgimage = image.cgImage!
-      CVPixelBufferPoolCreatePixelBuffer(nil, pixelBufferPool, &pixelBuffer)
-      CVPixelBufferLockBaseAddress(pixelBuffer!, [])
-      context.render(CIImage(cgImage: cgimage), to: pixelBuffer!)
-      self.pixelBuffer = pixelBuffer
-      
-      size = image.size
     }
   }
   
@@ -70,7 +62,19 @@ class RadioImageEncoder {
     self.size = image.size
     self.frameInterval = frameInterval
     
+    var pixelBuffer: CVPixelBuffer?
+    
+    let cgimage = image.cgImage!
+    CVPixelBufferPoolCreatePixelBuffer(nil, pixelBufferPool, &pixelBuffer)
+    CVPixelBufferLockBaseAddress(pixelBuffer!, [])
+    context.render(CIImage(cgImage: cgimage), to: pixelBuffer!)
+    self.pixelBuffer = pixelBuffer
+    
+    size = image.size
+    
     encoder.delegate = self
+    
+    encoder.startRunning()
   }
   
   public func encode() {

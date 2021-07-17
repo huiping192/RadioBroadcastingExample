@@ -58,6 +58,26 @@ extension RTMPMuxer: VideoEncoderDelegate {
         delegate?.sampleOutput(video: buffer, withTimestamp: 0, muxer: self)
     }
 
+  func sampleOutput(video sampleBuffer: CMSampleBuffer, timestamp: CMTime) {
+    let keyframe: Bool = !sampleBuffer.isNotSync
+    var compositionTime: Int32 = 0
+    let presentationTimeStamp: CMTime = timestamp
+    var decodeTimeStamp: CMTime = sampleBuffer.decodeTimeStamp
+    if decodeTimeStamp == CMTime.invalid {
+        decodeTimeStamp = presentationTimeStamp
+    } else {
+        compositionTime = Int32((presentationTimeStamp.seconds - decodeTimeStamp.seconds) * 1000)
+    }
+    let delta: Double = (videoTimeStamp == CMTime.zero ? 0 : decodeTimeStamp.seconds - videoTimeStamp.seconds) * 1000
+    guard let data = sampleBuffer.dataBuffer?.data, 0 <= delta else {
+        return
+    }
+    var buffer = Data([((keyframe ? FLVFrameType.key.rawValue : FLVFrameType.inter.rawValue) << 4) | FLVVideoCodec.avc.rawValue, FLVAVCPacketType.nal.rawValue])
+    buffer.append(contentsOf: compositionTime.bigEndian.data[1..<4])
+    buffer.append(data)
+    delegate?.sampleOutput(video: buffer, withTimestamp: delta, muxer: self)
+    videoTimeStamp = decodeTimeStamp
+  }
     func sampleOutput(video sampleBuffer: CMSampleBuffer) {
         let keyframe: Bool = !sampleBuffer.isNotSync
         var compositionTime: Int32 = 0

@@ -27,7 +27,7 @@ class RadioImageBufferSender {
     return !displayLink.isPaused
   }
 
-  var block: ((CMSampleBuffer)->Void)?
+  var block: ((CMSampleBuffer,CMTime)->Void)?
   
   private var index: Int = 0
   
@@ -69,13 +69,14 @@ class RadioImageBufferSender {
   func onScreenProcess(_ displayLink: CADisplayLink) {
     let sb = encoder.sampleBuffers[index]
     
-    CMSampleBufferSetOutputPresentationTimeStamp(sb,newValue: CMTimeMakeWithSeconds(displayLink.timestamp, preferredTimescale: 1000))
+    let timestamp = CMTimeMakeWithSeconds(displayLink.timestamp, preferredTimescale: 1000)
+    CMSampleBufferSetOutputPresentationTimeStamp(sb,newValue: timestamp)
     
     index += 1
     if index == frameInterval {
       index = 0
     }
-    block?(sb)
+    block?(sb, timestamp)
   }
 }
 

@@ -42,8 +42,8 @@ class ViewController: UITableViewController {
   }
   
   @IBAction func startButtonClicked() {
-    broadCasting?.image = imageView.image
-    broadCasting?.fps = Int(fpsText.text ?? "30") ?? 30
+//    broadCasting?.image = imageView.image
+//    broadCasting?.fps = Int(fpsText.text ?? "30") ?? 30
 
     broadCasting?.start()
   }
